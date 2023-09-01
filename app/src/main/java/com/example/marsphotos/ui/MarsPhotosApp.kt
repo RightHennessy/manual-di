@@ -42,14 +42,14 @@ fun MarsPhotosApp() {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = { MarsTopAppBar(scrollBehavior = scrollBehavior) }
+        topBar = { MarsTopAppBar(scrollBehavior = scrollBehavior) },
     ) {
         Surface(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(it)
+                .padding(it),
         ) {
-            val marsViewModel: MarsViewModel = viewModel()
+            val marsViewModel: MarsViewModel = viewModel(factory = MarsViewModel.Factory)
             HomeScreen(marsUiState = marsViewModel.marsUiState)
         }
     }
@@ -65,6 +65,6 @@ fun MarsTopAppBar(scrollBehavior: TopAppBarScrollBehavior, modifier: Modifier = 
                 style = MaterialTheme.typography.headlineSmall,
             )
         },
-        modifier = modifier
+        modifier = modifier,
     )
 }
